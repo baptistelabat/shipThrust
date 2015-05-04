@@ -1,0 +1,104 @@
+<!DOCTYPE HTML>
+<html style="direction: ltr;" lang="fr">
+<head>
+	<meta content="text/html; charset=UTF-8" http-equiv="content-type"/>
+</head>
+<body>
+	Yersin
+    <svg xmlns:svg="http://www.w3.org/2000/svg" xmlns="http://www.w3.org/2000/svg" version="1.1" width="500" height="800">
+        <g style="stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;s…ke-dasharray:none;fill-rule:evenodd;fill:none;stroke:#000000">
+            <g transform="translate(300,300) scale(1.5)">
+              <g id="ship" transform="rotate(0)">
+                <path id="hull" d="M -100,0 c 0,-400 0,-500 100,-500 c 100,0 100,100 100,500 z" style="stroke:#0000ff;stroke-width:3" transform="translate(0,300)"></path>
+              </g>
+            </g>
+            <g id="azimuth_port" transform="translate(200,600) scale(0.7)">
+              <g id="azimuth_port_propeller" transform="rotate(0)">
+                <path d="M 00,00 c 50,-20 100,-20 100,0 c 0,20 -50,20 -100,00 c -50,-20 -100,-20 -100,0 c 0,20 50,20 100,0 z" fill="black" style="stroke-width:6"></path>
+                <path d="M 00,00 m 0,100 c -20,-100 -20,-150 0,-150 c 20,0 20,50 0,150 z"  fill="black" style="stroke-width:6"></path>
+                <g id="azimuth_port_thrust" transform="scale(0)">
+                  <path id="arrow" d="M -10,0 -10,-300 10,-300 10,0 z" fill="red"></path>
+                  </g>
+              </g>
+            </g>
+            <g id="azimuth_stbd" transform="translate(400,600) scale(0.7)">
+              <g id="azimuth_stbd_propeller" transform="rotate(0)">
+                <path d="M 00,00 c 50,-20 100,-20 100,0 c 0,20 -50,20 -100,00 c -50,-20 -100,-20 -100,0 c 0,20 50,20 100,0 z" fill="black" style="stroke-width:6"></path>
+                <path d="M 00,00 m 0,100 c -20,-100 -20,-150 0,-150 c 20,0 20,50 0,150 z"  fill="black" style="stroke-width:6"></path>
+                <g id="azimuth_stbd_thrust" transform="scale(0)">
+                  <path id="arrow" d="M -10,0 -10,-300 10,-300 10,0 z" fill="red"></path>
+                </g>
+              </g>
+            </g>
+            <g id="pumpjet" transform="translate(300,200) scale(0.7)">
+              <g id="pumpjet_propeller" transform="rotate(0)">
+                <path d="M 00,00 c 50,-20 100,-20 100,0 c 0,20 -50,20 -100,00 c -50,-20 -100,-20 -100,0 c 0,20 50,20 100,0 z" fill="black" style="stroke-width:6"></path>
+                <path d="M 00,00 m 0,100 c -20,-100 -20,-150 0,-150 c 20,0 20,50 0,150 z"  fill="black" style="stroke-width:6"></path>
+                <g id="pumpjet_thrust" transform="scale(0)">
+                  <path id="arrow" d="M -10,0 -10,-300 10,-300 10,0 z" fill="red"></path>
+                </g>
+              </g>
+            </g>
+            <g id="force_vector" transform="translate(300,400) scale(1)">
+              <g id="force_vector_angle" transform="rotate(0)">
+                <g id="force_vector_scale" transform="scale(0)">
+                  <path d="M -10,0 -10,-300 10,-300 10,0 z" fill="red"></path>
+                </g>
+              </g>
+            </g>
+        </g>
+    </svg>
+    <form action = "">
+		<fieldset>
+			<input id = "azimuthPortAngleRange"
+				type = "range"
+				min = "-180"
+				max = "180"
+				value = "0"
+				step = "1" />
+			<output id = "azimuthPortAngle">0</output>
+      <input id = "pumpjetAngleRange"
+				type = "range"
+				min = "-180"
+				max = "180"
+				value = "0"
+				step = "1" />
+			<output id = "pumpjetAngle">0</output>
+      <input id = "azimuthStbdAngleRange"
+				type = "range"
+				min = "-180"
+				max = "180"
+				value = "0"
+				step = "1" />
+			<output id = "azimuthStbdAngle">0</output>
+
+		</fieldset>
+    	<fieldset>
+			<input id = "azimuthPortThrustRange"
+				type = "range"
+				min = "0"
+				max = "100"
+				value = "0"
+				step = "1" />
+			<output id = "azimuthPortThrust">0</output>
+      <input id = "pumpjetThrustRange"
+				type = "range"
+				min = "0"
+				max = "100"
+				value = "0"
+				step = "1" />
+			<output id = "pumpjetThrust">0</output>
+      <input id = "azimuthStbdThrustRange"
+				type = "range"
+				min = "0"
+				max = "100"
+				value = "0"
+				step = "1" />
+			<output id = "azimuthStbdThrust">0</output>
+
+		</fieldset>
+	</form>	
+	<script type = "text/javascript" language="javascript" src = "javascript/app.js" charset="utf-8"></script>				
+</body>
+</html>
+            
