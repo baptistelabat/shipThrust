@@ -1,3 +1,16 @@
+  function updateShipSize(){
+		//get elements
+		var length = document.getElementById("length");
+    var width = document.getElementById("width");
+		//copy the value over
+    scaleShip(length.value, width.value);
+	}
+  function scaleShip(length, width){
+		ship = document.getElementById("ship");
+		ship.setAttribute
+			('transform', 'scale(' +width/length*7.5 +','+ 7.5+')');
+		}
+
   function rotateShip(r){
 		ship = document.getElementById("ship");
 		ship.setAttribute
@@ -53,23 +66,23 @@
     function thrustAzimuthPort(percent){
     az = document.getElementById("azimuth_port_thrust");
 		az.setAttribute
-			('transform', 'scale(1,' +percent/100 +')');
+			('transform', 'scale(1,' +percent/100*document.getElementById("azimuthPortMaxThrustInput").value +')');
 		}
 
   function thrustAzimuthStbd(percent){
     az = document.getElementById("azimuth_stbd_thrust");
 		az.setAttribute
-			('transform', 'scale(1,' +percent/100 +')');
+			('transform', 'scale(1,' +percent/100*document.getElementById("azimuthStbdMaxThrustInput").value +')');
 		}
   function thrustPumpjet(percent){
     azi = document.getElementById("pumpjet_thrust");
 		azi.setAttribute
-			('transform', 'scale(1,' +percent/100 +')');
+			('transform', 'scale(1,' +percent/100*document.getElementById("pumpjetMaxThrustInput").value +')');
 		}
   function thrustTotal(percent){
     azi = document.getElementById("force_vector_scale");
 		azi.setAttribute
-			('transform', 'scale(1,' +percent/100 +')');
+			('transform', 'scale(1,' +percent+')');
 		}
   function updateAzimuthPortThrust(){
 		//get elements
@@ -99,17 +112,17 @@
     updateTotalThrust();
 	}
   function updateTotalThrust(){
-    var s=document.getElementById("pumpjetThrust").value/100*Math.sin(document.getElementById("pumpjetAngle").value/180*Math.PI)+
-    document.getElementById("azimuthStbdThrust").value/100*Math.sin(document.getElementById("azimuthStbdAngle").value/180*Math.PI)+
-    document.getElementById("azimuthPortThrust").value/100*Math.sin(document.getElementById("azimuthPortAngle").value/180*Math.PI);
-    var c=document.getElementById("pumpjetThrust").value/100*Math.cos(document.getElementById("pumpjetAngle").value/180*Math.PI)+
-    document.getElementById("azimuthStbdThrust").value/100*Math.cos(document.getElementById("azimuthStbdAngle").value/180*Math.PI)+
-    document.getElementById("azimuthPortThrust").value/100*Math.cos(document.getElementById("azimuthPortAngle").value/180*Math.PI);
+    var s=document.getElementById("pumpjetThrust").value/100*document.getElementById("pumpjetMaxThrustInput").value*Math.sin(document.getElementById("pumpjetAngle").value/180*Math.PI)+
+    document.getElementById("azimuthStbdThrust").value/100*document.getElementById("azimuthStbdMaxThrustInput").value*Math.sin(document.getElementById("azimuthStbdAngle").value/180*Math.PI)+
+    document.getElementById("azimuthPortThrust").value/100*document.getElementById("azimuthPortMaxThrustInput").value*Math.sin(document.getElementById("azimuthPortAngle").value/180*Math.PI);
+    var c=document.getElementById("pumpjetThrust").value/100*document.getElementById("pumpjetMaxThrustInput").value*Math.cos(document.getElementById("pumpjetAngle").value/180*Math.PI)+
+    document.getElementById("azimuthStbdThrust").value/100*document.getElementById("azimuthStbdMaxThrustInput").value*Math.cos(document.getElementById("azimuthStbdAngle").value/180*Math.PI)+
+    document.getElementById("azimuthPortThrust").value/100*document.getElementById("azimuthPortMaxThrustInput").value*Math.cos(document.getElementById("azimuthPortAngle").value/180*Math.PI);
     rotateTotalForce(Math.atan2(s,c)*180/Math.PI);
-    thrustTotal(Math.hypot(s,c)*100);
+    thrustTotal(Math.hypot(s,c));
   }
     
-  
+updateShipSize();
 document.getElementById("azimuthPortAngleRange").addEventListener("change", updateAzimuthPortAngle);
 document.getElementById("azimuthStbdAngleRange").addEventListener("change", updateAzimuthStbdAngle);
 document.getElementById("pumpjetAngleRange").addEventListener("change", updatePumpjetAngle);
@@ -117,4 +130,7 @@ document.getElementById("pumpjetAngleRange").addEventListener("change", updatePu
 document.getElementById("azimuthPortThrustRange").addEventListener("change", updateAzimuthPortThrust);
 document.getElementById("azimuthStbdThrustRange").addEventListener("change", updateAzimuthStbdThrust);
 document.getElementById("pumpjetThrustRange").addEventListener("change", updatePumpjetThrust);
+
+document.getElementById("width").addEventListener("change", updateShipSize);
+document.getElementById("length").addEventListener("change", updateShipSize);
 
